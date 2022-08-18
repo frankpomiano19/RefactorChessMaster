@@ -2,6 +2,7 @@ package Original;
 
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import java.util.Date;
 // -------------------------------------------------------------------------
 /**
