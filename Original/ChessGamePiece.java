@@ -257,6 +257,43 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
+     * Calculates and returns moves in the diagonal direction relative to this
+     * piece.
+     *
+     * @param board
+     *            the board to calculate the moves on
+     * @param numMoves
+     *            the number of moves to calculate
+     * @param moves 
+     *           movements in this direction
+     * @param count 
+     *           count of moves of the piece
+     * @param arr 
+     *           variation of diagonal movements
+     */
+    protected void countMovesdiagonal(int numMoves, int count, ArrayList<String> moves, ChessGameBoard board, int[] arr){
+        //only for NorthWestMoves
+        for ( int i = 1; i < 8 && count < numMoves; i++ ){
+            if ( isOnScreen( pieceRow +(arr[0]*i), pieceColumn +(arr[1]*i) )
+                && ( board.getCell( pieceRow +(arr[2]*i),
+                    pieceColumn +(arr[3]*i) ).getPieceOnSquare() == null ) ){
+                moves.add( ( pieceRow +(arr[4]*i) ) + "," + ( pieceColumn +(arr[5]*i) ) );
+                count++;
+            }
+            else if ( isEnemy( board, pieceRow +(arr[6]*i), pieceColumn +(arr[7]*i) ) ){
+                moves.add( ( pieceRow +(arr[8]*i) ) + "," + ( pieceColumn +(arr[9]*i) ) );
+                count++;
+                break;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    // ----------------------------------------------------------
+    /**
      * Calculates and returns moves in the north-west direction relative to this
      * piece.
      *
@@ -271,24 +308,9 @@ public abstract class ChessGamePiece{
         int numMoves ){
         ArrayList<String> moves = new ArrayList<String>();
         int count = 0;
+        int[] arrayposition = new int[]{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 }; 
         if ( isPieceOnScreen() ){
-            for ( int i = 1; i < 8 && count < numMoves; i++ ){
-                if ( isOnScreen( pieceRow - i, pieceColumn - i )
-                    && ( board.getCell( pieceRow - i,
-                        pieceColumn - i ).getPieceOnSquare() == null ) ){
-                    moves.add( ( pieceRow - i ) + "," + ( pieceColumn - i ) );
-                    count++;
-                }
-                else if ( isEnemy( board, pieceRow - i, pieceColumn - i ) ){
-                    moves.add( ( pieceRow - i ) + "," + ( pieceColumn - i ) );
-                    count++;
-                    break;
-                }
-                else
-                {
-                    break;
-                }
-            }
+            countMovesdiagonal(numMoves,count,moves,board,arrayposition);
         }
         return moves;
     }
@@ -308,24 +330,9 @@ public abstract class ChessGamePiece{
         int numMoves ){
         ArrayList<String> moves = new ArrayList<String>();
         int count = 0;
+        int[] arrayposition = new int[]{ -1, +1, -1, +1, -1, +1, -1, +1, -1, +1}; 
         if ( isPieceOnScreen() ){
-            for ( int i = 1; i < 8 && count < numMoves; i++ ){
-                if ( isOnScreen( pieceRow - i, pieceColumn + i )
-                    && ( board.getCell( pieceRow - i,
-                        pieceColumn + i).getPieceOnSquare() == null ) ){
-                    moves.add( ( pieceRow - i ) + "," + ( pieceColumn + i ) );
-                    count++;
-                }
-                else if ( isEnemy( board, pieceRow - i, pieceColumn + i ) ){
-                    moves.add( ( pieceRow - i ) + "," + ( pieceColumn + i ) );
-                    count++;
-                    break;
-                }
-                else
-                {
-                    break;
-                }
-            }
+            countMovesdiagonal(numMoves,count,moves,board,arrayposition);
         }
         return moves;
     }
@@ -345,24 +352,9 @@ public abstract class ChessGamePiece{
         int numMoves ){
         ArrayList<String> moves = new ArrayList<String>();
         int count = 0;
+        int[] arrayposition = new int[]{ +1, -1, +1, -1, +1, -1, +1, -1, +1, -1}; 
         if ( isPieceOnScreen() ){
-            for ( int i = 1; i < 8 && count < numMoves; i++ ){
-                if ( isOnScreen( pieceRow + i, pieceColumn - i )
-                    && ( board.getCell( pieceRow + i,
-                        pieceColumn - i ).getPieceOnSquare() == null ) ){
-                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                    count++;
-                }
-                else if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
-                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                    count++;
-                    break;
-                }
-                else
-                {
-                    break;
-                }
-            }
+            countMovesdiagonal(numMoves,count,moves,board,arrayposition);
         }
         return moves;
     }
@@ -382,24 +374,9 @@ public abstract class ChessGamePiece{
         int numMoves ){
         ArrayList<String> moves = new ArrayList<String>();
         int count = 0;
+        int[] arrayposition = new int[]{ +1, +1, +1, +1, +1, +1, +1, +1, +1, +1};
         if ( isPieceOnScreen() ){
-            for ( int i = 1; i < 8 && count < numMoves; i++ ){
-                if ( isOnScreen( pieceRow + i, pieceColumn + i )
-                    && ( board.getCell( pieceRow + i,
-                        pieceColumn + i ).getPieceOnSquare() == null ) ){
-                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
-                    count++;
-                }
-                else if ( isEnemy( board, pieceRow + i, pieceColumn + i ) ){
-                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
-                    count++;
-                    break;
-                }
-                else
-                {
-                    break;
-                }
-            }
+            countMovesdiagonal(numMoves,count,moves,board,arrayposition);
         }
         return moves;
     }
@@ -439,13 +416,7 @@ public abstract class ChessGamePiece{
      * @return boolean true if the location is valid, false if not
      */
     public boolean isOnScreen( int row, int col ){
-        if ( row >= 0 && row <= 7 && col >= 0 && col <= 7 ){
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return row >= 0 && row <= 7 && col >= 0 && col <= 7;
     }
     // ----------------------------------------------------------
     /**
