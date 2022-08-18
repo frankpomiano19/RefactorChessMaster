@@ -1,6 +1,7 @@
 package Original;
 
 import javax.swing.*;
+
 // -------------------------------------------------------------------------
 /**
  * Shows the GUI for the Chess game.
