@@ -29,22 +29,24 @@ public class Queen
      */
     public Queen( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
+        maxNumMov = 8;        
     }
     /**
      * Calculates the possible moves for this Queen.
      * @param board the board to check on
      * @return ArrayList<String> the list of moves
      */
+    // Codigo : RF3
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-        ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 8 );
-        ArrayList<String> northWestMoves = calculateNorthWestMoves( board, 8 );
-        ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 8 );
-        ArrayList<String> southWestMoves = calculateSouthWestMoves( board, 8 );
-        ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
-        ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
-        ArrayList<String> eastMoves = calculateEastMoves( board, 8 );
-        ArrayList<String> westMoves = calculateWestMoves( board, 8 );
+        ArrayList<String> northEastMoves = calculateNorthEastMoves( board, maxNumMov );
+        ArrayList<String> northWestMoves = calculateNorthWestMoves( board, maxNumMov );
+        ArrayList<String> southEastMoves = calculateSouthEastMoves( board, maxNumMov );
+        ArrayList<String> southWestMoves = calculateSouthWestMoves( board, maxNumMov );
+        ArrayList<String> northMoves = calculateNorthMoves( board, maxNumMov );
+        ArrayList<String> southMoves = calculateSouthMoves( board, maxNumMov );
+        ArrayList<String> eastMoves = calculateEastMoves( board, maxNumMov );
+        ArrayList<String> westMoves = calculateWestMoves( board, maxNumMov );
         ArrayList<String> allMoves = new ArrayList<String>();
         allMoves.addAll( northEastMoves );
         allMoves.addAll( northWestMoves );

@@ -3,6 +3,7 @@ package Original;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+
 // -------------------------------------------------------------------------
 /**
  * Abstract class that is used to represent a game piece on the chess board.
@@ -15,10 +16,13 @@ import javax.swing.ImageIcon;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
+
 public abstract class ChessGamePiece{
     private boolean             skipMoveGeneration;
     private int                 pieceColor;
     private ImageIcon           pieceImage;
+    protected int               maxNumMov;
+    private Enemy               isAEnemy = new Enemy();
     /**
      * The list of possible moves for this piece. Updated when actions involving
      * this piece occur. (created, moved, selected, etc)
@@ -35,15 +39,15 @@ public abstract class ChessGamePiece{
     /**
      * Represents a black piece as an int
      */
-    static final int            BLACK      = 0;
+    public static final int            BLACK      = 0;
     /**
      * Represents a white piece as an int
      */
-    static final int            WHITE      = 1;
+    public static final int            WHITE      = 1;
     /**
      * Represents a piece that has not been assigned a color
      */
-    static final int            UNASSIGNED = -1;
+    public static final int            UNASSIGNED = -1;
     // ----------------------------------------------------------
     /**
      * Create a new GamePiece object.
@@ -358,6 +362,13 @@ public abstract class ChessGamePiece{
         }
         return moves;
     }
+
+    // --------------------------
+    public boolean isEnemy( ChessGameBoard board, int row, int col ) {
+        return isAEnemy.isEnemy(board, row, col, this.getColorOfPiece());
+    }
+
+
     // ----------------------------------------------------------
     /**
      * Calculates and returns moves in the south-east direction relative to this
@@ -415,6 +426,7 @@ public abstract class ChessGamePiece{
      *            the column to check
      * @return boolean true if the location is valid, false if not
      */
+    // Codigo : RF2
     public boolean isOnScreen( int row, int col ){
         return row >= 0 && row <= 7 && col >= 0 && col <= 7;
     }
@@ -621,53 +633,9 @@ public abstract class ChessGamePiece{
         }
         return false;
     }
-    // ----------------------------------------------------------
-    /**
-     * Determines if the row and column contains an enemy piece. This is defined
-     * in GamePiece and not ChessGameBoard because different pieces have
-     * different enemies depending on their colors.
-     *
-     * @param row
-     *            row of the GamePiece
-     * @param col
-     *            column of the GamePiece
-     * @param board
-     *            the board to check
-     * @return true if it is an enemy piece, false if not
-     */
-    public boolean isEnemy( ChessGameBoard board, int row, int col ){
-        if ( row > 7 || col > 7 || row < 0 || col < 0 ){
-            return false;
-        }
-        ChessGamePiece enemyPiece =
-            board.getCell( row, col ).getPieceOnSquare() == null
-                ? null
-                : board.getCell( row, col ).getPieceOnSquare();
-        if ( enemyPiece == null
-            || this.getColorOfPiece() == ChessGamePiece.UNASSIGNED
-            || enemyPiece.getColorOfPiece() == ChessGamePiece.UNASSIGNED ){
-            return false;
-        }
-        if ( this.getColorOfPiece() == ChessGamePiece.WHITE ){
-            if ( enemyPiece.getColorOfPiece() == ChessGamePiece.BLACK ){
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            if ( enemyPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
+
+
+
     // ----------------------------------------------------------
     /**
      * Gets a list of GamePieces that can currently attack this game piece.

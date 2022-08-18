@@ -1,6 +1,8 @@
 package Original;
 
 import javax.swing.ImageIcon;
+
+
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
@@ -13,6 +15,7 @@ import java.util.ArrayList;
  */
 public class Knight
     extends ChessGamePiece{
+
     /**
      * Knight constructor for gamePiece
      *
@@ -83,6 +86,7 @@ public class Knight
      *            the game board to check
      * @return ArrayList<String> the list of possible moves
      */
+    // Codigo : RF3
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> moves = new ArrayList<String>();

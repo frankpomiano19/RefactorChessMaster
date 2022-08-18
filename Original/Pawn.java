@@ -1,6 +1,8 @@
 package Original;
 
 import javax.swing.ImageIcon;
+
+
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 public class Pawn
     extends ChessGamePiece{
     private boolean notMoved;
+    
     // ----------------------------------------------------------
     /**
      * Create a new Pawn object.
@@ -70,6 +73,7 @@ public class Pawn
      *            the game board to calculate moves on
      * @return ArrayList<String> the moves
      */
+    // Codigo : RF3
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> moves = new ArrayList<String>();

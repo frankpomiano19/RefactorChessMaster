@@ -28,6 +28,7 @@ public class King
      */
     public King( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color, false );
+        maxNumMov = 1;
     }
     /**
      * Calculates the possible moves for this piece. These are ALL the possible
@@ -37,16 +38,17 @@ public class King
      *            the game board to calculate moves on
      * @return ArrayList<String> the moves
      */
+    // Codigo : RF3
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-        ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 1 );
-        ArrayList<String> northWestMoves = calculateNorthWestMoves( board, 1 );
-        ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 1 );
-        ArrayList<String> southWestMoves = calculateSouthWestMoves( board, 1 );
-        ArrayList<String> northMoves = calculateNorthMoves( board, 1 );
-        ArrayList<String> southMoves = calculateSouthMoves( board, 1 );
-        ArrayList<String> eastMoves = calculateEastMoves( board, 1 );
-        ArrayList<String> westMoves = calculateWestMoves( board, 1 );
+        ArrayList<String> northEastMoves = calculateNorthEastMoves( board, maxNumMov );
+        ArrayList<String> northWestMoves = calculateNorthWestMoves( board, maxNumMov );
+        ArrayList<String> southEastMoves = calculateSouthEastMoves( board, maxNumMov );
+        ArrayList<String> southWestMoves = calculateSouthWestMoves( board, maxNumMov );
+        ArrayList<String> northMoves = calculateNorthMoves( board, maxNumMov );
+        ArrayList<String> southMoves = calculateSouthMoves( board, maxNumMov );
+        ArrayList<String> eastMoves = calculateEastMoves( board, maxNumMov );
+        ArrayList<String> westMoves = calculateWestMoves( board, maxNumMov );
         ArrayList<String> allMoves = new ArrayList<String>();
         allMoves.addAll( northEastMoves );
         allMoves.addAll( northWestMoves );
