@@ -70,6 +70,7 @@ public class Pawn
      *            the game board to calculate moves on
      * @return ArrayList<String> the moves
      */
+    // Codigo : RF3
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> moves = new ArrayList<String>();

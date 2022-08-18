@@ -26,6 +26,7 @@ public class Bishop extends ChessGamePiece{
      */
     public Bishop( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
+        maxNumMov = 8;
     }
     /**
      * Calculates the possible moves for this piece. These are ALL the possible
@@ -35,12 +36,13 @@ public class Bishop extends ChessGamePiece{
      *            the game board to calculate moves on
      * @return ArrayList<String> the moves
      */
+    // Codigo : RF3
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-        ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 8 );
-        ArrayList<String> northWestMoves = calculateNorthWestMoves( board, 8 );
-        ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 8 );
-        ArrayList<String> southWestMoves = calculateSouthWestMoves( board, 8 );
+        ArrayList<String> northEastMoves = calculateNorthEastMoves( board, maxNumMov );
+        ArrayList<String> northWestMoves = calculateNorthWestMoves( board, maxNumMov );
+        ArrayList<String> southEastMoves = calculateSouthEastMoves( board, maxNumMov );
+        ArrayList<String> southWestMoves = calculateSouthWestMoves( board, maxNumMov );
         ArrayList<String> allMoves = new ArrayList<String>();
         allMoves.addAll( northEastMoves );
         allMoves.addAll( northWestMoves );

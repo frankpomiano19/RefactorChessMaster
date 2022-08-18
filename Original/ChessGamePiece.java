@@ -15,10 +15,12 @@ import javax.swing.ImageIcon;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
+
 public abstract class ChessGamePiece{
     private boolean             skipMoveGeneration;
     private int                 pieceColor;
     private ImageIcon           pieceImage;
+    protected int               maxNumMov;
     /**
      * The list of possible moves for this piece. Updated when actions involving
      * this piece occur. (created, moved, selected, etc)
@@ -438,6 +440,7 @@ public abstract class ChessGamePiece{
      *            the column to check
      * @return boolean true if the location is valid, false if not
      */
+    // Codigo : RF2
     public boolean isOnScreen( int row, int col ){
         if ( row >= 0 && row <= 7 && col >= 0 && col <= 7 ){
             return true;
