@@ -1,6 +1,8 @@
 package Original;
 
 import javax.swing.ImageIcon;
+
+
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 public class Pawn
     extends ChessGamePiece{
     private boolean notMoved;
+    
     // ----------------------------------------------------------
     /**
      * Create a new Pawn object.

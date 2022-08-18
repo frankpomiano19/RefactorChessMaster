@@ -1,6 +1,8 @@
 package Original;
 
 import javax.swing.ImageIcon;
+
+
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
@@ -13,6 +15,7 @@ import java.util.ArrayList;
  */
 public class Knight
     extends ChessGamePiece{
+
     /**
      * Knight constructor for gamePiece
      *
