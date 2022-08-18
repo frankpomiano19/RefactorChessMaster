@@ -478,19 +478,19 @@ public abstract class ChessGamePiece{
                     ( (ChessPanel)board.getParent() ).getGameEngine();
                 if ( gameEngine.getCurrentPlayer() == 1 ){
                     graveyard =
-                        ( (ChessPanel)board.getParent() ).getGraveyard( 2 );
+                        ( (ChessGameLateral)board.getParent() ).getGraveyard( 2 );
                 }
                 else
                 {
                     graveyard =
-                        ( (ChessPanel)board.getParent() ).getGraveyard( 1 );
+                        ( (ChessGameLateral)board.getParent() ).getGraveyard( 1 );
                 }
                 graveyard.addPiece(
                     board.getCell( row, col ).getPieceOnSquare() );
             }
             setPieceLocation( row, col );
             moveLog += " (" + row + ", " + col + ")";
-            ( (ChessPanel)board.getParent() ).getGameLog().addToLog( moveLog );
+            ( (ChessGameLateral)board.getParent() ).getGameLog().addToLog( moveLog );
             board.getCell( row, col ).setPieceOnSquare( this );
             if ( !skipMoveGeneration ){
                 updatePossibleMoves( board );

@@ -129,9 +129,9 @@ public class ChessGameBoard extends JPanel{
         chessCells = new BoardSquare[8][8];
         this.removeAll();
         if ( getParent() instanceof ChessPanel ){
-            ( (ChessPanel)getParent() ).getGraveyard( 1 ).clearGraveyard();
-            ( (ChessPanel)getParent() ).getGraveyard( 2 ).clearGraveyard();
-            ( (ChessPanel)getParent() ).getGameLog().clearLog();
+            ( (ChessGameLateral)getParent() ).getGraveyard( 1 ).clearGraveyard();
+            ( (ChessGameLateral)getParent() ).getGraveyard( 2 ).clearGraveyard();
+            ( (ChessGameLateral)getParent() ).getGameLog().clearLog();
         }
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){

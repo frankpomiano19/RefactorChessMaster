@@ -35,8 +35,8 @@ public class ChessGameEngine{
         this.board = board;
         this.king1 = (King)board.getCell( 7, 3 ).getPieceOnSquare();
         this.king2 = (King)board.getCell( 0, 3 ).getPieceOnSquare();
-        ( (ChessPanel)board.getParent() ).getGameLog().clearLog();
-        ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
+        ( (ChessGameLateral)board.getParent() ).getGameLog().clearLog();
+        ( (ChessGameLateral)board.getParent() ).getGameLog().addToLog(
             "A new chess "
                 + "game has been started. Player 1 (white) will play "
                 + "against Player 2 (black). BEGIN!" );
@@ -48,14 +48,14 @@ public class ChessGameEngine{
     public void reset(){
         firstClick = true;
         currentPlayer = 1;
-        ( (ChessPanel)board.getParent() ).getGraveyard( 1 ).clearGraveyard();
-        ( (ChessPanel)board.getParent() ).getGraveyard( 2 ).clearGraveyard();
+        ( (ChessGameLateral)board.getParent() ).getGraveyard( 1 ).clearGraveyard();
+        ( (ChessGameLateral)board.getParent() ).getGraveyard( 2 ).clearGraveyard();
         ( (ChessPanel)board.getParent() ).getGameBoard().initializeBoard();
-        ( (ChessPanel)board.getParent() ).revalidate();
+        ( (ChessGameLateral)board.getParent() ).revalidate();
         this.king1 = (King)board.getCell( 7, 3 ).getPieceOnSquare();
         this.king2 = (King)board.getCell( 0, 3 ).getPieceOnSquare();
-        ( (ChessPanel)board.getParent() ).getGameLog().clearLog();
-        ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
+        ( (ChessGameLateral)board.getParent() ).getGameLog().clearLog();
+        ( (ChessGameLateral)board.getParent() ).getGameLog().addToLog(
             "A new chess "
                 + "game has been started. Player 1 (white) will play "
                 + "against Player 2 (black). BEGIN!" );
@@ -65,7 +65,7 @@ public class ChessGameEngine{
      */
     private void nextTurn(){
         currentPlayer = ( currentPlayer == 1 ) ? 2 : 1;
-        ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
+        ( (ChessGameLateral)board.getParent() ).getGameLog().addToLog(
                 "It is now Player " + currentPlayer + "'s turn." );
     }
     // ----------------------------------------------------------

@@ -13,6 +13,7 @@ import javax.swing.*;
  */
 public class ChessPanel
     extends JPanel{
+ 
     private ChessGameBoard  gameBoard;
     private ChessGameEngine gameEngine;
     private ChessGameLateral gameLateral;
@@ -21,26 +22,24 @@ public class ChessPanel
      * Create a new ChessPanel object.
      */
     public ChessPanel(){
-    	gameLateral = new ChessGameLateral();
         this.setLayout( new BorderLayout() );
         gameBoard = new ChessGameBoard();
+        gameLateral = new ChessGameLateral();
         this.add( gameBoard, BorderLayout.CENTER );
-        this.add( gameLog, BorderLayout.EAST );
+    
         this.setPreferredSize( new Dimension( 800, 600 ) );
         gameEngine = new ChessGameEngine( gameBoard ); // start the game
     }
+  
     // ----------------------------------------------------------
     /**
      * Gets the logger object for use in other classes.
      * 
      * @return ChessGameLog the ChessGameLog object
      */
+    
     public ChessGameLateral getGameLateral(){
         return gameLateral;
-    }
-    
-    public ChessGameLog getGameLog(){
-        return gameLog;
     }
     // ----------------------------------------------------------
     /**
@@ -68,16 +67,5 @@ public class ChessPanel
      *            the number of the player (1 or 2)
      * @return ChessGraveyard the graveyard requested
      */
-    public ChessGraveyard getGraveyard( int whichPlayer ){
-        if ( whichPlayer == 1 ){
-            return playerOneGraveyard;
-        }
-        else if ( whichPlayer == 2 ){
-            return playerTwoGraveyard;
-        }
-        else
-        {
-            return null;
-        }
-    }
+    
 }

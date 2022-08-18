@@ -108,17 +108,17 @@ public class ChessMenuBar
      * Takes an appropriate action if the toggle graveyard button is clicked.
      */
     private void toggleGraveyardHandler(){
-        ( (ChessPanel)this.getParent() ).getGraveyard( 1 ).setVisible(
-            !( (ChessPanel)this.getParent() ).getGraveyard( 1 ).isVisible() );
-        ( (ChessPanel)this.getParent() ).getGraveyard( 2 ).setVisible(
-            !( (ChessPanel)this.getParent() ).getGraveyard( 2 ).isVisible() );
+        ( (ChessGameLateral)this.getParent() ).getGraveyard( 1 ).setVisible(
+            !( (ChessGameLateral)this.getParent() ).getGraveyard( 1 ).isVisible() );
+        ( (ChessGameLateral)this.getParent() ).getGraveyard( 2 ).setVisible(
+            !( (ChessGameLateral)this.getParent() ).getGraveyard( 2 ).isVisible() );
     }
     /**
      * Takes an appropriate action if the toggle game log button is clicked.
      */
     private void toggleGameLogHandler(){
-        ( (ChessPanel)this.getParent() ).getGameLog().setVisible(
-            !( (ChessPanel)this.getParent() ).getGameLog().isVisible() );
+        ( (ChessGameLateral)this.getParent() ).getGameLog().setVisible(
+            !( (ChessGameLateral)this.getParent() ).getGameLog().isVisible() );
         ( (ChessPanel)this.getParent() ).revalidate();
     }
 }
